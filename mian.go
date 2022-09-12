@@ -1,12 +1,17 @@
 package main
 
 import (
+	"database/sql"
 	"fmt"
+	_ "github.com/uptrace/bun/driver/pgdriver"
 )
 
 func main() {
-	dsn := "host=localhost user=postgres password=postgres dbname=learning port=5432"
+	dsn := "postgresql://postgres:postgres@localhost:5432/learning"
 
-	fmt.Println(dsn)
-
+	_, err := sql.Open("pg", dsn)
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println("Connected")
 }

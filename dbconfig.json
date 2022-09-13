@@ -1,7 +1,8 @@
 {
   "host": "localhost",
   "user": "postgres",
-  "password": "postrges",
+  "password": "postgres",
   "dbname": "postgres",
-  "port": 5432
+  "port": 5432,
+  "migrations": "./migrations"
 }

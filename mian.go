@@ -11,7 +11,7 @@ import (
 
 type MigrationEntity struct {
 	gorm.Model
-	name string
+	Name string
 }
 
 func main() {
@@ -51,12 +51,10 @@ func main() {
 	var migrationEntities []MigrationEntity
 	db.Model(&MigrationEntity{}).Scan(migrationEntities)
 
-	fmt.Println(migrationEntities)
-
 	var migrationDifferences []string
 	for _, migrationName := range migrationNames {
 		for _, entity := range migrationEntities {
-			if migrationName != entity.name {
+			if migrationName != entity.Name {
 				migrationDifferences = append(migrationDifferences, migrationName)
 			}
 		}

@@ -8,3 +8,9 @@ run:
 
 install:
 	cd cmd/migrate && go install
+
+clean:
+	cd cmd/migrate && go clean
+
+lint:
+	golangci-lint.exe run

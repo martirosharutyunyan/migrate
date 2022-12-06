@@ -2,18 +2,11 @@ package migrate
 
 import (
 	"log"
-	"os"
-	"strings"
 )
 
-func GetNotSyncedMigrations(folderMigrations []os.DirEntry, migrationEntities []MigrationEntity) []string {
+func GetNotSyncedMigrations(folderMigrations []string, migrationEntities []MigrationEntity) []string {
 	var notSyncedMigrations []string
-	for _, folderMigration := range folderMigrations {
-		folderMigrationName := folderMigration.Name()
-		if strings.Contains(folderMigrationName, ".down.sql") {
-			continue
-		}
-
+	for _, folderMigrationName := range folderMigrations {
 		existMigration := false
 
 		for _, migrationEntity := range migrationEntities {
@@ -31,12 +24,7 @@ func GetNotSyncedMigrations(folderMigrations []os.DirEntry, migrationEntities []
 	for _, migrationEntity := range migrationEntities {
 		existMigration := false
 
-		for _, folderMigration := range folderMigrations {
-			folderMigrationName := folderMigration.Name()
-			if strings.Contains(folderMigrationName, ".down.sql") {
-				continue
-			}
-
+		for _, folderMigrationName := range folderMigrations {
 			if folderMigrationName == migrationEntity.Name {
 				existMigration = true
 			}

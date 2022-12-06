@@ -16,12 +16,11 @@ func main() {
 	}
 
 	switch cliArgument {
-	case "--run":
+	case "run":
 		migrate.RunMigration()
-	case "--revert":
+	case "revert":
 		migrate.RevertMigration()
-	case "--help":
-	case "--generate":
+	case "generate":
 		if len(os.Args) != 3 {
 			log.Fatal("Please provide the migration name")
 		}
@@ -29,6 +28,6 @@ func main() {
 	case "help":
 		migrate.Help()
 	default:
-		log.Fatal("run go help")
+		log.Fatal("run migrate help")
 	}
 }

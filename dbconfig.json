@@ -1,8 +1,8 @@
 {
-  "host": "tiny.db.elephantsql.com",
-  "user": "bpuywbok",
-  "password": "kGNkDWn2H6h6-4DYcP_O9XX3nR0PfA_s",
-  "dbname": "bpuywbok",
+  "host": "localhost",
+  "user": "postgres",
+  "password": "postgres",
+  "dbname": "learning",
   "port": 5432,
   "migrations": "./migrations"
 }

@@ -3,6 +3,7 @@ package migrate
 import (
 	"log"
 	"os"
+	"strings"
 )
 
 type MigrationEntity struct {
@@ -10,10 +11,17 @@ type MigrationEntity struct {
 }
 
 func RunMigration() {
-	folderMigrations, directoryErr := os.ReadDir(config["migrations"].(string))
+	folderMigrationDirEntries, directoryErr := os.ReadDir(config["migrations"].(string))
 
 	if directoryErr != nil {
 		log.Fatal(directoryErr)
+	}
+
+	var folderMigrations []string
+	for _, folderMigrationDirEntry := range folderMigrationDirEntries {
+		if strings.Contains(folderMigrationDirEntry.Name(), ".up.sql") {
+			folderMigrations = append(folderMigrations, folderMigrationDirEntry.Name())
+		}
 	}
 
 	var migrationEntities []MigrationEntity
@@ -44,8 +52,16 @@ func RunMigration() {
 		}
 
 		migrationSql := string(migrationSqlBuffer)
-		db.Exec(migrationSql)
-		db.Exec("INSERT INTO migrations (name) VALUES (?)", migrationName)
+
+		_, migrationErr := db.Exec(migrationSql)
+		if migrationErr != nil {
+			log.Fatal(migrationErr)
+		}
+
+		_, insertErr := db.Exec("INSERT INTO migrations (name) VALUES ($1)", migrationName)
+		if insertErr != nil {
+			log.Fatal(insertErr)
+		}
 	}
 
 	log.Println("Migrations synced to database")

@@ -10,7 +10,7 @@ import (
 var db *sql.DB
 
 func init() {
-	dsn := fmt.Sprintf("host=%v user=%v password=%v dbname=%v port=%v",
+	dsn := fmt.Sprintf("host=%v user=%v password=%v dbname=%v port=%v sslmode=disable",
 		config["host"],
 		config["user"],
 		config["password"],

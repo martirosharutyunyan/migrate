@@ -1,0 +1,8 @@
+{
+  "host": "host",
+  "user": "user",
+  "password": "password",
+  "dbname": "dbname",
+  "port": 5432,
+  "migrations": "./migrations"
+}

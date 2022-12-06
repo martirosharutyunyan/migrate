@@ -13,4 +13,4 @@ clean:
 	cd cmd/migrate && go clean
 
 lint:
-	golangci-lint.exe run
+	golangci-lint run

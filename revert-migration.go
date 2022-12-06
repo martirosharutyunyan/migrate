@@ -15,4 +15,5 @@ func RevertMigration() {
 	for _, migration := range folderMigrations {
 		log.Println(migration.Name())
 	}
+
 }

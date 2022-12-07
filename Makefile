@@ -14,3 +14,6 @@ clean:
 
 lint:
 	golangci-lint run
+
+tidy:
+	go mod tidy

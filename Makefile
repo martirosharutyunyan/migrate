@@ -17,3 +17,6 @@ lint:
 
 tidy:
 	go mod tidy
+
+pre-commit:
+	pre-commit run --all-files

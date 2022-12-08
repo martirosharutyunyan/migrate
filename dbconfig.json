@@ -1,8 +1,0 @@
-{
-  "host": "localhost",
-  "user": "postgres",
-  "password": "postgres",
-  "dbname": "learning",
-  "port": 5432,
-  "migrations": "./migrations"
-}

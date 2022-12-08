@@ -1,2 +1,2 @@
-./cmd/migrate/*.exe
-./dbconfig.json
+cmd/migrate/*.exe
+dbconfig.json

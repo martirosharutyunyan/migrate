@@ -21,5 +21,4 @@ func GenerateMigration(name string) {
 	if migrationDownFileErr != nil {
 		log.Fatal(migrationDownFileErr)
 	}
-
 }

@@ -1,9 +1,10 @@
 package main
 
 import (
-	"github.com/martirosharutyunyan/migrate"
 	"log"
 	"os"
+
+	"github.com/martirosharutyunyan/migrate/pkg"
 )
 
 func main() {
@@ -21,7 +22,7 @@ func main() {
 	case "revert":
 		migrate.RevertMigration()
 	case "generate":
-		if len(os.Args) != 3 {
+		if len(os.Args) != migrate.GENERATE_MIGRATION_ARGS_LEN {
 			log.Fatal("Please provide the migration name")
 		}
 		migrate.GenerateMigration(os.Args[2])

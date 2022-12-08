@@ -15,13 +15,13 @@ func RevertMigration() {
 	migrationDownName := folderMigrations[len(folderMigrations)-2].Name()
 	migrationUpName := folderMigrations[len(folderMigrations)-1].Name()
 
-	migrationSqlBuffer, readFileErr := os.ReadFile(config["migrations"].(string) + "/" + migrationDownName)
+	migrationSQLBuffer, readFileErr := os.ReadFile(config["migrations"].(string) + "/" + migrationDownName)
 
 	if readFileErr != nil {
 		log.Fatal(readFileErr)
 	}
 
-	migrationSql := string(migrationSqlBuffer)
+	migrationSql := string(migrationSQLBuffer)
 
 	_, migrationErr := db.Exec(migrationSql)
 	if migrationErr != nil {

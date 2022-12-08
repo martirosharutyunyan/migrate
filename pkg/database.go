@@ -3,8 +3,10 @@ package migrate
 import (
 	"database/sql"
 	"fmt"
-	_ "github.com/lib/pq"
 	"log"
+
+	// postgresql driver
+	_ "github.com/lib/pq"
 )
 
 var db *sql.DB

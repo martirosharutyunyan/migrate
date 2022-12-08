@@ -45,15 +45,15 @@ func RunMigration() {
 	notSyncedMigrations := GetNotSyncedMigrations(folderMigrations, migrationEntities)
 
 	for _, migrationName := range notSyncedMigrations {
-		migrationSqlBuffer, readFileErr := os.ReadFile(config["migrations"].(string) + "/" + migrationName)
+		migrationSQLBuffer, readFileErr := os.ReadFile(config["migrations"].(string) + "/" + migrationName)
 
 		if readFileErr != nil {
 			log.Fatal(readFileErr)
 		}
 
-		migrationSql := string(migrationSqlBuffer)
+		migrationSQL := string(migrationSQLBuffer)
 
-		_, migrationErr := db.Exec(migrationSql)
+		_, migrationErr := db.Exec(migrationSQL)
 		if migrationErr != nil {
 			log.Fatal(migrationErr)
 		}

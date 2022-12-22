@@ -183,6 +183,49 @@ linters-settings:
     # Default: 1
     tab-width: 4
 
+  govet:
+    # Report about shadowed variables.
+    # Default: false
+    check-shadowing: true
+    # Settings per analyzer.
+    enable:
+      - asmdecl
+      - assign
+      - atomic
+      - atomicalign
+      - bools
+      - buildtag
+      - cgocall
+      - composites
+      - copylocks
+      - deepequalerrors
+      - errorsas
+      - fieldalignment
+      - findcall
+      - framepointer
+      - httpresponse
+      - ifaceassert
+      - loopclosure
+      - lostcancel
+      - nilfunc
+      - nilness
+      - printf
+      - reflectvaluecompare
+      - shadow
+      - shift
+      - sigchanyzer
+      - sortslice
+      - stdmethods
+      - stringintconv
+      - structtag
+      - testinggoroutine
+      - tests
+      - unmarshal
+      - unreachable
+      - unsafeptr
+      - unusedresult
+      - unusedwrite
+
   misspell:
     # Correct spellings using locale preferences for US or UK.
     # Setting locale to US will correct the British spelling of 'colour' to 'color'.
@@ -392,25 +435,25 @@ linters:
     - errorlint
     - exhaustive
     - funlen
-    - gci
+    #    - gci # depricated
     - goconst
     - gocritic
     - godox
-    - gofmt
+    #    - gofmt # depricated
     - gomnd
     - gomoddirectives
     - gosimple
-#    - govet # TODO ADD govet
+    - govet
     - lll
     - misspell
     - nakedret
     - nilnil
     - nolintlint
-#    - prealloc # TODO uncomment when need optimization
+    #    - prealloc # TODO uncomment when need optimization
     - staticcheck
     - stylecheck
     - tagliatelle
-#    - thelper # TODO uncomment when write tests
+    #    - thelper # TODO uncomment when write tests
     - usestdlibvars
     - unparam
     - varnamelen

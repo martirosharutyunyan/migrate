@@ -8,8 +8,8 @@ import (
 
 var config map[string]any
 
-func init() {
-	content, err := os.ReadFile("./dbconfig.json")
+func InitConfig(configFilePath string) {
+	content, err := os.ReadFile(configFilePath)
 	if err != nil {
 		log.Fatal(err)
 	}

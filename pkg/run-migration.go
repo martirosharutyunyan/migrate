@@ -64,5 +64,5 @@ func RunMigration() {
 		}
 	}
 
-	log.Println("Migrations synced to database")
+	log.Println("Migrations synced to database: ", notSyncedMigrations)
 }

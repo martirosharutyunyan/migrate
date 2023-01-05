@@ -2,7 +2,6 @@ package migrate
 
 import (
 	"log"
-	"os"
 )
 
 func Main(configFilePath string, args []string, cli bool) {
@@ -12,9 +11,9 @@ func Main(configFilePath string, args []string, cli bool) {
 	var cliArgument string
 
 	if len(args) > 0 {
-		cliArgument = os.Args[0]
+		cliArgument = args[0]
 	} else {
-		log.Fatal("run go help")
+		log.Fatal("run migrate help")
 	}
 
 	switch cliArgument {

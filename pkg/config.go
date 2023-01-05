@@ -20,3 +20,7 @@ func InitConfig(configFilePath string) {
 		log.Fatal(marshalErr)
 	}
 }
+
+func GetMigrationFolderPath() string {
+	return config["migrations"].(string)
+}

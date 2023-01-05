@@ -6,7 +6,7 @@ import (
 )
 
 func RevertMigration() {
-	folderMigrations, directoryErr := os.ReadDir(config["migrations"].(string))
+	folderMigrations, directoryErr := os.ReadDir(GetMigrationFolderPath())
 
 	if directoryErr != nil {
 		log.Fatal(directoryErr)
@@ -15,7 +15,7 @@ func RevertMigration() {
 	migrationDownName := folderMigrations[len(folderMigrations)-2].Name()
 	migrationUpName := folderMigrations[len(folderMigrations)-1].Name()
 
-	migrationSQLBuffer, readFileErr := os.ReadFile(config["migrations"].(string) + "/" + migrationDownName)
+	migrationSQLBuffer, readFileErr := os.ReadFile(GetMigrationFolderPath() + "/" + migrationDownName)
 
 	if readFileErr != nil {
 		log.Fatal(readFileErr)

@@ -10,8 +10,14 @@ type MigrationEntity struct {
 	Name string
 }
 
-func RunMigration() {
-	folderMigrationDirEntries, directoryErr := os.ReadDir(config["migrations"].(string))
+func RunMigration(cli bool) {
+	migrationFolderPath := GetMigrationFolderPath()
+
+	if !cli {
+		migrationFolderPath = "../../" + migrationFolderPath
+	}
+
+	folderMigrationDirEntries, directoryErr := os.ReadDir(migrationFolderPath)
 
 	if directoryErr != nil {
 		log.Fatal(directoryErr)
@@ -45,7 +51,7 @@ func RunMigration() {
 	notSyncedMigrations := GetNotSyncedMigrations(folderMigrations, migrationEntities)
 
 	for _, migrationName := range notSyncedMigrations {
-		migrationSQLBuffer, readFileErr := os.ReadFile(config["migrations"].(string) + "/" + migrationName)
+		migrationSQLBuffer, readFileErr := os.ReadFile(migrationFolderPath + "/" + migrationName)
 
 		if readFileErr != nil {
 			log.Fatal(readFileErr)

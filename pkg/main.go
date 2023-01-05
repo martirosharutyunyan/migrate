@@ -5,13 +5,13 @@ import (
 	"os"
 )
 
-func Main(configFilePath string) {
+func Main(configFilePath string, args []string, cli bool) {
 	InitConfig(configFilePath)
 	InitDatabase()
 
 	var cliArgument string
 
-	if len(os.Args) > 1 {
+	if len(args) > 1 {
 		cliArgument = os.Args[1]
 	} else {
 		log.Fatal("run go help")
@@ -19,14 +19,14 @@ func Main(configFilePath string) {
 
 	switch cliArgument {
 	case "run":
-		RunMigration()
+		RunMigration(cli)
 	case "revert":
 		RevertMigration()
 	case "generate":
-		if len(os.Args) != GENERATE_MIGRATION_ARGS_LEN {
+		if len(args) != GENERATE_MIGRATION_ARGS_LEN {
 			log.Fatal("Please provide the migration name")
 		}
-		GenerateMigration(os.Args[2])
+		GenerateMigration(args[2])
 	case "help":
 		Help()
 	default:

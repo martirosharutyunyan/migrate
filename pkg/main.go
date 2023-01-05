@@ -10,7 +10,7 @@ func Main(configFilePath string, args []string, cli bool) {
 	InitDatabase()
 
 	var cliArgument string
-	log.Println(cliArgument)
+
 	if len(args) > 0 {
 		cliArgument = os.Args[0]
 	} else {

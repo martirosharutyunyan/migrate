@@ -4,6 +4,10 @@ import (
 	"log"
 )
 
+func Sync(configFilePath string) {
+	Main(configFilePath, []string{"run"}, false)
+}
+
 func Main(configFilePath string, args []string, cli bool) {
 	InitConfig(configFilePath)
 	InitDatabase()

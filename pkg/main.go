@@ -11,8 +11,8 @@ func Main(configFilePath string, args []string, cli bool) {
 
 	var cliArgument string
 
-	if len(args) > 1 {
-		cliArgument = os.Args[1]
+	if len(args) > 0 {
+		cliArgument = os.Args[0]
 	} else {
 		log.Fatal("run go help")
 	}
@@ -26,7 +26,7 @@ func Main(configFilePath string, args []string, cli bool) {
 		if len(args) != GENERATE_MIGRATION_ARGS_LEN {
 			log.Fatal("Please provide the migration name")
 		}
-		GenerateMigration(args[2])
+		GenerateMigration(args[1])
 	case "help":
 		Help()
 	default:

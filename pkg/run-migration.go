@@ -10,11 +10,9 @@ type MigrationEntity struct {
 	Name string
 }
 
-func RunMigration(cli bool) {
-	migrationFolderPath := GetMigrationFolderPath()
-
-	if !cli {
-		migrationFolderPath = "../../" + migrationFolderPath
+func RunMigration(migrationFolderPath string) {
+	if migrationFolderPath == "" {
+		migrationFolderPath = GetMigrationFolderPath()
 	}
 
 	folderMigrationDirEntries, directoryErr := os.ReadDir(migrationFolderPath)

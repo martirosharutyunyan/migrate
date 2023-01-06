@@ -4,11 +4,11 @@ import (
 	"log"
 )
 
-func Sync(configFilePath string) {
-	Main(configFilePath, []string{"run"}, false)
+func Sync(configFilePath string, migrationFolderPath string) {
+	Main(configFilePath, []string{"run"}, migrationFolderPath)
 }
 
-func Main(configFilePath string, args []string, cli bool) {
+func Main(configFilePath string, args []string, migrationFolderPath string) {
 	InitConfig(configFilePath)
 	InitDatabase()
 
@@ -22,7 +22,7 @@ func Main(configFilePath string, args []string, cli bool) {
 
 	switch cliArgument {
 	case "run":
-		RunMigration(cli)
+		RunMigration(migrationFolderPath)
 	case "revert":
 		RevertMigration()
 	case "generate":

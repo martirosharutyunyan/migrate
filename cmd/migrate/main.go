@@ -6,5 +6,5 @@ import (
 )
 
 func main() {
-	migrate.Main("./dbconfig.json", os.Args[1:], true)
+	migrate.Main("./dbconfig.json", os.Args[1:], "")
 }
